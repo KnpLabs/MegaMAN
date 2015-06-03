@@ -1,0 +1,10 @@
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+pre code {
+    margin: 10px;
+}
