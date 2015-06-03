@@ -2,7 +2,6 @@
 
 namespace Knp\MegaMAN\Markdown\Processor;
 
-use Knp\MegaMAN\DataCollector\DocumentationViewer;
 use Knp\MegaMAN\Markdown\Processor;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

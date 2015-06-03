@@ -2,8 +2,6 @@
 
 namespace Knp\MegaMAN\DataCollector;
 
-use Knp\MegaMAN\Markdown\Processor;
-use Michelf\MarkdownExtra;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;

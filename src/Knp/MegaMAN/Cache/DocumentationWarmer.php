@@ -50,8 +50,6 @@ class DocumentationWarmer implements CacheWarmerInterface
 
     /**
      * @param Filter $filter
-     *
-     * @return void
      */
     public function addFilter(Filter $filter)
     {

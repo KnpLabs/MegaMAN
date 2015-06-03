@@ -86,4 +86,3 @@ services:
         arguments:
             - @router
             - @request_stack
-
