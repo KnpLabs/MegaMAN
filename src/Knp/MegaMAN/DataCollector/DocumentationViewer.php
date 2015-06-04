@@ -13,14 +13,14 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
     /**
      * @var string
      */
-    private $cache_file;
+    private $cache;
 
     /**
-     * @param string $cache_file
+     * @param string $cache
      */
-    public function __construct($cache_file)
+    public function __construct($cache)
     {
-        $this->cache_file = $cache_file;
+        $this->cache = $cache;
     }
 
     /**
@@ -28,7 +28,7 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
      */
     public function getDependencies()
     {
-        $data     = json_decode(file_get_contents($this->cache_file), true);
+        $data = json_decode(file_get_contents($this->cache), true);
 
         return $data;
     }
@@ -53,7 +53,7 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
      */
     public function serialize()
     {
-        return $this->cache_file;
+        return $this->cache;
     }
 
     /**
@@ -61,6 +61,6 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
      */
     public function unserialize($value)
     {
-        $this->cache_file = $value;
+        $this->cache = $value;
     }
 }
