@@ -11,7 +11,7 @@ class DocumentationWarmer implements CacheWarmerInterface
     /**
      * @var string
      */
-    private $cache_file;
+    private $cache;
 
     /**
      * @var string
@@ -34,14 +34,14 @@ class DocumentationWarmer implements CacheWarmerInterface
     private $filters;
 
     /**
-     * @param string      $cache_file
+     * @param string      $cache
      * @param string      $documentation
      * @param string      $vendor
      * @param Finder|null $finder
      */
-    public function __construct($cache_file, $documentation, $vendor, Finder $finder = null)
+    public function __construct($cache, $documentation, $vendor, Finder $finder = null)
     {
-        $this->cache_file    = $cache_file;
+        $this->cache         = $cache;
         $this->documentation = $documentation;
         $this->vendor        = $vendor;
         $this->finder        = null === $finder ? new Finder() : $finder;
@@ -50,6 +50,8 @@ class DocumentationWarmer implements CacheWarmerInterface
 
     /**
      * @param Filter $filter
+     *
+     * @return void
      */
     public function addFilter(Filter $filter)
     {
@@ -79,13 +81,14 @@ class DocumentationWarmer implements CacheWarmerInterface
         }
 
         $packages    = array_map(function ($e) { return $e['package']; }, $definitions);
+
         $definitions = array_combine($packages, $definitions);
 
         ksort($definitions);
 
         $export = json_encode($definitions, JSON_PRETTY_PRINT);
 
-        file_put_contents($this->cache_file, $export);
+        file_put_contents($this->cache, $export);
     }
 
     /**

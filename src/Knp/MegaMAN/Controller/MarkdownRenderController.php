@@ -19,10 +19,18 @@ class MarkdownRenderController
     }
 
     /**
+     * @param Processor $processor
+     */
+    public function addProcessor(Processor $processor)
+    {
+        $this->processors[] = $processor;
+    }
+
+    /**
      * @param string      $file
      * @param string|null $page
      *
-     * @return string
+     * @return Response
      */
     public function renderAction($file, $page = null)
     {
@@ -37,10 +45,5 @@ class MarkdownRenderController
         }
 
         return new Response($html);
-    }
-
-    public function addProcessor(Processor $processor)
-    {
-        $this->processors[] = $processor;
     }
 }

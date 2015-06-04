@@ -35,7 +35,7 @@ class VersionInstalled implements Filter
             foreach ($json as $installed) {
                 if ($installed['name'] === $definition['package']) {
                     $definition['version'] = $installed['version'];
-                    $result[] = $definition;
+                    $result[]              = $definition;
                 }
             }
         }

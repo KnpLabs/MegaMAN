@@ -31,4 +31,15 @@ class AppKernel
 
 #Usages
 
-Just look at the new button into your debug tool bar.
+A new menu is available into your web debug toolbar.
+
+![Toolbar button](images/sample1.png)
+
+Now you can access to all documentations.
+
+![Profiler interface](images/sample2.png)
+
+ - YOUR OWN DOCUMENTATION => Your project documentation (if there is one)
+ - Require => Your required dependencies
+ - Require Dev => Your development required dependencies
+ - Others => Other dependencies, dependencies of your dependencies

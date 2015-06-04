@@ -8,6 +8,7 @@
             "email": "pierre.plazanet@knplabs.com"
         }
     ],
+    "keywords": ["documentation", "man", "manual", "dependencies", "vendor", "interface", "merge"],
     "require": {
         "michelf/php-markdown": "~1.5",
         "symfony/config": "~2.0",
