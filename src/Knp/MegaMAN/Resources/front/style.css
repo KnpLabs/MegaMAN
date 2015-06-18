@@ -8,3 +8,11 @@ h1 {
 pre code {
     margin: 10px;
 }
+
+ul {
+    padding-left: 40px;
+}
+
+ul li {
+    list-style-type: square;
+}
