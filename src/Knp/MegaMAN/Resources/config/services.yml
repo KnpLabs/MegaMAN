@@ -30,6 +30,7 @@ services:
             - ['addProcessor', [@knp_megaman.processor.css]]
             - ['addProcessor', [@knp_megaman.processor.relative_link]]
             - ['addProcessor', [@knp_megaman.processor.absolute_link]]
+            - ['addProcessor', [@knp_megaman.processor.image]]
 
     knp_megaman.css_inliner:
         class: TijsVerkoyen\CssToInlineStyles\CssToInlineStyles
@@ -37,9 +38,15 @@ services:
     knp_megaman.data_collector.documentation_viewer:
         class: Knp\MegaMAN\DataCollector\DocumentationViewer
         arguments:
-            - %knp_megaman.cache_file%
+            - @knp_megaman.extractor.extractor
         tags:
             - { name: data_collector, template: "MegaMANBundle::wdt.html.twig", id: "megaman" }
+
+    knp_megaman.extractor.extractor:
+        class: Knp\MegaMAN\Extractor\Extractor
+        arguments:
+            - %knp_megaman.cache_file%
+            - @request_stack
 
     knp_megaman.filter.composer_file:
         class: Knp\MegaMAN\Filter\ComposerFile
@@ -80,6 +87,11 @@ services:
         class: Knp\MegaMAN\Markdown\Processor\Css
         arguments:
             - @knp_megaman.css_inliner
+
+    knp_megaman.processor.image:
+        class: Knp\MegaMAN\Markdown\Processor\Image
+        arguments:
+            - @knp_megaman.extractor.extractor
 
     knp_megaman.processor.relative_link:
         class: Knp\MegaMAN\Markdown\Processor\RelativeLink

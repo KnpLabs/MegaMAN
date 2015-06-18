@@ -2,6 +2,7 @@
 
 namespace Knp\MegaMAN\DataCollector;
 
+use Knp\MegaMAN\Extractor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
@@ -11,14 +12,14 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
     const NAME = 'megaman';
 
     /**
-     * @var string
+     * @var Extractor
      */
     private $cache;
 
     /**
-     * @param string $cache
+     * @param Extractor $cache
      */
-    public function __construct($cache)
+    public function __construct(Extractor $cache)
     {
         $this->cache = $cache;
     }
@@ -28,9 +29,7 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
      */
     public function getDependencies()
     {
-        $data = json_decode(file_get_contents($this->cache), true);
-
-        return $data;
+        return $this->cache->extract();
     }
 
     /**
@@ -53,7 +52,7 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
      */
     public function serialize()
     {
-        return $this->cache;
+        return serialize($this->cache);
     }
 
     /**
@@ -61,6 +60,6 @@ class DocumentationViewer implements DataCollectorInterface, \Serializable
      */
     public function unserialize($value)
     {
-        $this->cache = $value;
+        $this->cache = unserialize($value);
     }
 }
