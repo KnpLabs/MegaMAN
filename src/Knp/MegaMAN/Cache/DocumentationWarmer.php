@@ -79,7 +79,6 @@ class DocumentationWarmer implements CacheWarmerInterface
         }
 
         $packages    = array_map(function ($e) { return $e['package']; }, $definitions);
-
         $definitions = array_combine($packages, $definitions);
 
         ksort($definitions);

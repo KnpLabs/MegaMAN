@@ -18,7 +18,7 @@ class Extractor implements ExtractorInterface, \Serializable
     private $stack;
 
     /**
-     * @var array
+     * @var mixed
      */
     private $json;
 

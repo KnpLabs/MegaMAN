@@ -42,7 +42,7 @@ class Image implements Processor
 
             $path = sprintf('%s%s%s', dirname($current['readme']), DIRECTORY_SEPARATOR, $file);
 
-            if (false == file_exists($path)) {
+            if (false === file_exists($path)) {
                 continue;
             }
 
@@ -50,7 +50,7 @@ class Image implements Processor
                 continue;
             }
 
-            $data = sprintf("data:%s;base64,%s", $info['mime'], base64_encode(file_get_contents($path)));
+            $data = sprintf('data:%s;base64,%s', $info['mime'], base64_encode(file_get_contents($path)));
 
             $html = str_replace(
                 $string,
