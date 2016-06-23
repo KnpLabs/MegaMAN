@@ -24,7 +24,7 @@ class DirectDependency implements Filter
      */
     public function __invoke(array $array)
     {
-        $result = [];
+        $result = array();
 
         foreach ($array as $definition) {
             if (false === array_key_exists('package', $definition)) {
@@ -32,7 +32,7 @@ class DirectDependency implements Filter
             }
 
             $json = json_decode(file_get_contents($this->composer), true);
-            $deps = [];
+            $deps = array();
 
             if (true === array_key_exists('require', $json)) {
                 $deps = array_merge($deps, $json['require']);

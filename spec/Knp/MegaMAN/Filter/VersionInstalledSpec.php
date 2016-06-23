@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class VersionInstalledSpec extends ObjectBehavior
 {
@@ -27,11 +26,11 @@ class VersionInstalledSpec extends ObjectBehavior
             }
         }
 
-        $this([
-            ['package' => 'phpspec/phpspec'],
-            ['package' => 'phpspec/other'],
-        ])->shouldReturn([
-            ['package' => 'phpspec/phpspec', 'version' => $version],
-        ]);
+        $this(array(
+            array('package' => 'phpspec/phpspec'),
+            array('package' => 'phpspec/other'),
+        ))->shouldReturn(array(
+            array('package' => 'phpspec/phpspec', 'version' => $version),
+        ));
     }
 }

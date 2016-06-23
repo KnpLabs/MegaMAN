@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class DevDependencySpec extends ObjectBehavior
 {
@@ -19,16 +18,16 @@ class DevDependencySpec extends ObjectBehavior
 
     function it_can_deduce_direct_deps()
     {
-        $definitions = [
-            ['package' => 'symfony/kernel'],
-            ['package' => 'phpspec/phpspec'],
-            ['package' => 'symfony/dependency-injection'],
-        ];
+        $definitions = array(
+            array('package' => 'symfony/kernel'),
+            array('package' => 'phpspec/phpspec'),
+            array('package' => 'symfony/dependency-injection'),
+        );
 
-        $this($definitions)->shouldReturn([
-            ['package' => 'symfony/kernel', 'dev' => false],
-            ['package' => 'phpspec/phpspec', 'dev' => true],
-            ['package' => 'symfony/dependency-injection', 'dev' => false],
-        ]);
+        $this($definitions)->shouldReturn(array(
+            array('package' => 'symfony/kernel', 'dev' => false),
+            array('package' => 'phpspec/phpspec', 'dev' => true),
+            array('package' => 'symfony/dependency-injection', 'dev' => false),
+        ));
     }
 }

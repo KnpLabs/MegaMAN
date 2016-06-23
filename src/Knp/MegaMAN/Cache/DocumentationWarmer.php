@@ -45,7 +45,7 @@ class DocumentationWarmer implements CacheWarmerInterface
         $this->documentation = $documentation;
         $this->vendor        = $vendor;
         $this->finder        = null === $finder ? new Finder() : $finder;
-        $this->filters       = [];
+        $this->filters       = array();
     }
 
     /**
@@ -68,17 +68,17 @@ class DocumentationWarmer implements CacheWarmerInterface
             ->name($this->documentation)
         ;
 
-        $definitions = [];
+        $definitions = array();
 
         foreach ($files as $file) {
-            $definitions[] = ['readme' => $file->getRealpath()];
+            $definitions[] = array('readme' => $file->getRealpath());
         }
 
         foreach ($this->filters as $filter) {
             $definitions = $filter($definitions);
         }
 
-        $packages    = array_map(function ($e) { return $e['package']; }, $definitions);
+        $packages = array_map(function ($e) { return $e['package']; }, $definitions);
         $definitions = array_combine($packages, $definitions);
 
         ksort($definitions);

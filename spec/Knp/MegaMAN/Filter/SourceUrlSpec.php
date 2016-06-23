@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class SourceUrlSpec extends ObjectBehavior
 {
@@ -21,12 +20,12 @@ class SourceUrlSpec extends ObjectBehavior
 
         $this->beConstructedWith($installed);
 
-        $this([
-            ['package' => 'phpspec/phpspec'],
-            ['package' => 'phpspec/other'],
-        ])->shouldReturn([
-            ['package' => 'phpspec/phpspec', 'url' => 'https://github.com/phpspec/phpspec.git'],
-            ['package' => 'phpspec/other', 'url' => ''],
-        ]);
+        $this(array(
+            array('package' => 'phpspec/phpspec'),
+            array('package' => 'phpspec/other'),
+        ))->shouldReturn(array(
+            array('package' => 'phpspec/phpspec', 'url' => 'https://github.com/phpspec/phpspec.git'),
+            array('package' => 'phpspec/other', 'url' => ''),
+        ));
     }
 }

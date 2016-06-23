@@ -72,7 +72,7 @@ class Extractor implements ExtractorInterface, \Serializable
      */
     public function serialize()
     {
-        return serialize([$this->json, $this->stack]);
+        return serialize(array($this->json, $this->stack));
     }
 
     /**

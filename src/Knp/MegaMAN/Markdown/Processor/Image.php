@@ -25,7 +25,7 @@ class Image implements Processor
      */
     public function process($html)
     {
-        $matches = [];
+        $matches = array();
 
         if (false === preg_match_all('/<img([^>]*) src="(?!http)([^"]*)"/', $html, $matches)) {
             return $html;

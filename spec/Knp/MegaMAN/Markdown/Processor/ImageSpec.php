@@ -4,15 +4,14 @@ namespace spec\Knp\MegaMAN\Markdown\Processor;
 
 use Knp\MegaMAN\Extractor;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ImageSpec extends ObjectBehavior
 {
     function let(Extractor $extractor)
     {
-        $extractor->getCurrent()->willReturn([
+        $extractor->getCurrent()->willReturn(array(
             'readme' => sprintf('%s/../../../../../README.md', __DIR__),
-        ]);
+        ));
 
         $this->beConstructedWith($extractor);
     }

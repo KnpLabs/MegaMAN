@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ComposerFileSpec extends ObjectBehavior
 {
@@ -18,6 +17,6 @@ class ComposerFileSpec extends ObjectBehavior
         $readme   = sprintf('%s/README.md', $root);
         $composer = sprintf('%s/composer.json', $root);
 
-        $this([['readme' => $readme]])->shouldReturn([['readme' => $readme, 'composer' => $composer]]);
+        $this(array(array('readme' => $readme)))->shouldReturn(array(array('readme' => $readme, 'composer' => $composer)));
     }
 }
