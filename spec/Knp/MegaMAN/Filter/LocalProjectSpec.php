@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class LocalProjectSpec extends ObjectBehavior
 {
@@ -22,7 +21,7 @@ class LocalProjectSpec extends ObjectBehavior
 
         $this->beConstructedWith($readme, $composer);
 
-        $this([])->shouldReturn([[
+        $this(array())->shouldReturn(array(array(
             'composer' => $composer,
             'dev'      => null,
             'direct'   => null,
@@ -30,6 +29,6 @@ class LocalProjectSpec extends ObjectBehavior
             'package'  => 'knplabs/mega-man',
             'readme'   => $readme,
             'version'  => 'local',
-        ]]);
+        )));
     }
 }

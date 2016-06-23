@@ -11,7 +11,7 @@ class PackageName implements Filter
      */
     public function __invoke(array $array)
     {
-        $result = [];
+        $result = array();
 
         foreach ($array as $definition) {
             if (false === array_key_exists('composer', $definition)) {

@@ -15,7 +15,7 @@ class MarkdownRenderController
 
     public function __construct()
     {
-        $this->processors = [];
+        $this->processors = array();
     }
 
     /**

@@ -24,7 +24,7 @@ class SourceUrl implements Filter
      */
     public function __invoke(array $array)
     {
-        $result = [];
+        $result = array();
         $json   = json_decode(file_get_contents($this->installed), true);
 
         foreach ($array as $definition) {
@@ -39,6 +39,7 @@ class SourceUrl implements Filter
                     if (false === array_key_exists('source', $installed)) {
                         continue;
                     }
+
                     if (false === array_key_exists('url', $installed['source'])) {
                         continue;
                     }

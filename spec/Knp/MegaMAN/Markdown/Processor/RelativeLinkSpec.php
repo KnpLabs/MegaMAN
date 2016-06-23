@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Markdown\Processor;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -33,7 +32,7 @@ class RelativeLinkSpec extends ObjectBehavior
     function it_transform_relatives_urls($generator)
     {
         $generator
-            ->generate('_profiler', ['token' => 'token', 'panel' => 'panel', 'package' => 'package'])
+            ->generate('_profiler', array('token' => 'token', 'panel' => 'panel', 'package' => 'package'))
             ->willReturn('profiler/token?package=package&panel=panel')
         ;
 

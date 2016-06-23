@@ -34,11 +34,11 @@ class RelativeLink implements Processor
     {
         $request = $this->stack->getMasterRequest();
 
-        $params = [
+        $params = array(
             'token'   => $request->attributes->get('token'),
             'panel'   => $request->query->get('panel'),
             'package' => $request->query->get('package'),
-        ];
+        );
 
         $url = $this->generator->generate('_profiler', $params);
 

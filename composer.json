@@ -10,16 +10,17 @@
     ],
     "keywords": ["documentation", "man", "manual", "dependencies", "vendor", "interface", "merge"],
     "require": {
+        "php": ">=5.3", 
         "michelf/php-markdown": "~1.5",
-        "symfony/config": "~2.0",
-        "symfony/dependency-injection": "~2.0",
-        "symfony/finder": "~2.0",
-        "symfony/http-kernel": "~2.0",
-        "symfony/routing": "~2.0",
+        "symfony/config": "~2.4|~3.0",
+        "symfony/dependency-injection": "~2.4|~3.0",
+        "symfony/finder": "~2.4|~3.0",
+        "symfony/http-kernel": "~2.4|~3.0",
+        "symfony/routing": "~2.4|~3.0",
         "tijsverkoyen/css-to-inline-styles": "~1.5"
     },
     "require-dev": {
-        "knplabs/phpspec-welldone-extension": "dev-master@dev",
+        "pedrotroller/php-cs-custom-fixer": "^1.4",
         "phpspec/phpspec": "^2.2"
     },
     "autoload": {
@@ -32,7 +33,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.1.x-dev"
         }
     }
 }

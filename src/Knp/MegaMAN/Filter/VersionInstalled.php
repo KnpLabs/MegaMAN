@@ -24,7 +24,7 @@ class VersionInstalled implements Filter
      */
     public function __invoke(array $array)
     {
-        $result = [];
+        $result = array();
         $json   = json_decode(file_get_contents($this->installed), true);
 
         foreach ($array as $definition) {

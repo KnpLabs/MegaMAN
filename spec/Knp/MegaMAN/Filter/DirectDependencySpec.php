@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class DirectDependencySpec extends ObjectBehavior
 {
@@ -19,16 +18,16 @@ class DirectDependencySpec extends ObjectBehavior
 
     function it_can_deduce_direct_deps()
     {
-        $definitions = [
-            ['package' => 'behat/behat'],
-            ['package' => 'phpspec/phpspec'],
-            ['package' => 'phpspec/prophecy'],
-        ];
+        $definitions = array(
+            array('package' => 'behat/behat'),
+            array('package' => 'phpspec/phpspec'),
+            array('package' => 'phpspec/prophecy'),
+        );
 
-        $this($definitions)->shouldReturn([
-            ['package' => 'behat/behat', 'direct' => false],
-            ['package' => 'phpspec/phpspec', 'direct' => true],
-            ['package' => 'phpspec/prophecy', 'direct' => false],
-        ]);
+        $this($definitions)->shouldReturn(array(
+            array('package' => 'behat/behat', 'direct' => false),
+            array('package' => 'phpspec/phpspec', 'direct' => true),
+            array('package' => 'phpspec/prophecy', 'direct' => false),
+        ));
     }
 }

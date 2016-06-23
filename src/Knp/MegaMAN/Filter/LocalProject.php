@@ -41,7 +41,7 @@ class LocalProject implements Filter
 
         $json = json_decode(file_get_contents($this->composer), true);
 
-        $array[] = [
+        $array[] = array(
             'composer' => $this->composer,
             'dev'      => null,
             'direct'   => null,
@@ -49,7 +49,7 @@ class LocalProject implements Filter
             'package'  => $json['name'],
             'readme'   => $this->readme,
             'version'  => 'local',
-        ];
+        );
 
         return $array;
     }
