@@ -4,7 +4,6 @@ namespace spec\Knp\MegaMAN\Markdown\Processor;
 
 use Knp\MegaMAN\Extractor;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ImageSpec extends ObjectBehavior
 {
@@ -25,7 +24,7 @@ class ImageSpec extends ObjectBehavior
     function it_replaces_local_images()
     {
         $html =
-<<<HTML
+<<<'HTML'
 <html>
     <img src="http://google.com/favicon.png" />
     <img src="fixtures/pixel.png" />
@@ -33,7 +32,7 @@ class ImageSpec extends ObjectBehavior
 HTML;
 
         $result =
-<<<HTML
+<<<'HTML'
 <html>
     <img src="http://google.com/favicon.png" />
     <img style="max-width: 100%" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEX///8AAABVwtN+AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB98GDxQyNsF6K+gAAAAKSURBVAjXY2AAAAACAAHiIbwzAAAAAElFTkSuQmCC" />

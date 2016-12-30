@@ -2,8 +2,8 @@
 
 namespace spec\Knp\MegaMAN\Filter;
 
+use Knp\MegaMAN\Filter\DevDependency;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class DevDependencySpec extends ObjectBehavior
 {
@@ -14,7 +14,7 @@ class DevDependencySpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Knp\MegaMAN\Filter\DevDependency');
+        $this->shouldHaveType(DevDependency::class);
     }
 
     function it_can_deduce_direct_deps()

@@ -2,8 +2,8 @@
 
 namespace spec\Knp\MegaMAN\Filter;
 
+use Knp\MegaMAN\Filter\LocalProject;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class LocalProjectSpec extends ObjectBehavior
 {
@@ -11,7 +11,7 @@ class LocalProjectSpec extends ObjectBehavior
     {
         $this->beConstructedWith('', '');
 
-        $this->shouldHaveType('Knp\MegaMAN\Filter\LocalProject');
+        $this->shouldHaveType(LocalProject::class);
     }
 
     function it_adds_local_readme_to_definitions()

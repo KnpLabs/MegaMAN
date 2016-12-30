@@ -1,100 +1,117 @@
 parameters:
-    knp_megaman.cache_file:          "%kernel.cache_dir%/knp_megaman_cache.json"
-    knp_megaman.composer_json:       "%kernel.root_dir%/../composer.json"
-    knp_megaman.documentation_file:  "README.md"
-    knp_megaman.installed_json:      "%knp_megaman.vendor_dir%/composer/installed.json"
-    knp_megaman.readme:              "%kernel.root_dir%/../README.md"
-    knp_megaman.vendor_dir:          "%kernel.root_dir%/../vendor"
+    knp_megaman.cache_file: '%kernel.cache_dir%/knp_megaman_cache.json'
+    knp_megaman.composer_json: '%kernel.root_dir%/../composer.json'
+    knp_megaman.documentation_file: /^README\.(md|markdown)$/
+    knp_megaman.installed_json: '%knp_megaman.vendor_dir%/composer/installed.json'
+    knp_megaman.readme: '%kernel.root_dir%/../README.md'
+    knp_megaman.vendor_dir: '%kernel.root_dir%/../vendor'
 
 services:
+
     knp_megaman.cache.documentation_warmer:
+        public: false
         class: Knp\MegaMAN\Cache\DocumentationWarmer
         arguments:
-            - %knp_megaman.cache_file%
-            - %knp_megaman.documentation_file%
-            - %knp_megaman.vendor_dir%
+            - '%knp_megaman.cache_file%'
+            - '%knp_megaman.documentation_file%'
+            - '%knp_megaman.vendor_dir%'
         calls:
-            - ['addFilter', [@knp_megaman.filter.composer_file]]
-            - ['addFilter', [@knp_megaman.filter.package_name]]
-            - ['addFilter', [@knp_megaman.filter.version_installed]]
-            - ['addFilter', [@knp_megaman.filter.source_url]]
-            - ['addFilter', [@knp_megaman.filter.direct_dependency]]
-            - ['addFilter', [@knp_megaman.filter.dev_dependency]]
-            - ['addFilter', [@knp_megaman.filter.local_project]]
+            - [addFilter, ['@knp_megaman.filter.composer_file']]
+            - [addFilter, ['@knp_megaman.filter.package_name']]
+            - [addFilter, ['@knp_megaman.filter.version_installed']]
+            - [addFilter, ['@knp_megaman.filter.source_url']]
+            - [addFilter, ['@knp_megaman.filter.direct_dependency']]
+            - [addFilter, ['@knp_megaman.filter.dev_dependency']]
+            - [addFilter, ['@knp_megaman.filter.local_project']]
         tags:
             - { name: kernel.cache_warmer, priority: 0 }
 
     knp_megaman.controller.markdown_renderer_controller:
+        public: true
         class: Knp\MegaMAN\Controller\MarkdownRenderController
         calls:
-            - ['addProcessor', [@knp_megaman.processor.css]]
-            - ['addProcessor', [@knp_megaman.processor.relative_link]]
-            - ['addProcessor', [@knp_megaman.processor.absolute_link]]
-            - ['addProcessor', [@knp_megaman.processor.image]]
+            - [addProcessor, ['@knp_megaman.processor.css']]
+            - [addProcessor, ['@knp_megaman.processor.relative_link']]
+            - [addProcessor, ['@knp_megaman.processor.absolute_link']]
+            - [addProcessor, ['@knp_megaman.processor.image']]
 
     knp_megaman.css_inliner:
+        public: false
         class: TijsVerkoyen\CssToInlineStyles\CssToInlineStyles
 
     knp_megaman.data_collector.documentation_viewer:
+        public: false
         class: Knp\MegaMAN\DataCollector\DocumentationViewer
         arguments:
-            - @knp_megaman.extractor.extractor
+            - '@knp_megaman.extractor.extractor'
         tags:
-            - { name: data_collector, template: "MegaMANBundle::wdt.html.twig", id: "megaman" }
+            - { name: data_collector, template: 'MegaMANBundle::wdt.html.twig', id: megaman }
 
     knp_megaman.extractor.extractor:
+        public: false
         class: Knp\MegaMAN\Extractor\Extractor
         arguments:
-            - %knp_megaman.cache_file%
-            - @request_stack
+            - '%knp_megaman.cache_file%'
+            - '@request_stack'
 
     knp_megaman.filter.composer_file:
+        public: false
         class: Knp\MegaMAN\Filter\ComposerFile
 
     knp_megaman.filter.dev_dependency:
+        public: false
         class: Knp\MegaMAN\Filter\DevDependency
         arguments:
-            - %knp_megaman.composer_json%
+            - '%knp_megaman.composer_json%'
 
     knp_megaman.filter.direct_dependency:
+        public: false
         class: Knp\MegaMAN\Filter\DirectDependency
         arguments:
-            - %knp_megaman.composer_json%
+            - '%knp_megaman.composer_json%'
 
     knp_megaman.filter.local_project:
+        public: false
         class: Knp\MegaMAN\Filter\LocalProject
         arguments:
-            - %knp_megaman.readme%
-            - %knp_megaman.composer_json%
+            - '%knp_megaman.readme%'
+            - '%knp_megaman.composer_json%'
 
     knp_megaman.filter.package_name:
+        public: false
         class: Knp\MegaMAN\Filter\PackageName
 
     knp_megaman.filter.source_url:
+        public: false
         class: Knp\MegaMAN\Filter\SourceUrl
         arguments:
-            - %knp_megaman.installed_json%
+            - '%knp_megaman.installed_json%'
 
     knp_megaman.filter.version_installed:
+        public: false
         class: Knp\MegaMAN\Filter\VersionInstalled
         arguments:
-            - %knp_megaman.installed_json%
+            - '%knp_megaman.installed_json%'
 
     knp_megaman.processor.absolute_link:
+        public: false
         class: Knp\MegaMAN\Markdown\Processor\AbsoluteLink
 
     knp_megaman.processor.css:
+        public: false
         class: Knp\MegaMAN\Markdown\Processor\Css
         arguments:
-            - @knp_megaman.css_inliner
+            - '@knp_megaman.css_inliner'
 
     knp_megaman.processor.image:
+        public: false
         class: Knp\MegaMAN\Markdown\Processor\Image
         arguments:
-            - @knp_megaman.extractor.extractor
+            - '@knp_megaman.extractor.extractor'
 
     knp_megaman.processor.relative_link:
+        public: false
         class: Knp\MegaMAN\Markdown\Processor\RelativeLink
         arguments:
-            - @router
-            - @request_stack
+            - '@router'
+            - '@request_stack'

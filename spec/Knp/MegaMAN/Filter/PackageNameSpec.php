@@ -2,15 +2,14 @@
 
 namespace spec\Knp\MegaMAN\Filter;
 
+use Knp\MegaMAN\Filter\PackageName;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-use Symfony\Component\Yaml\Parser;
 
 class PackageNameSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Knp\MegaMAN\Filter\PackageName');
+        $this->shouldHaveType(PackageName::class);
     }
 
     function it_inject_name_into_description()

@@ -2,8 +2,8 @@
 
 namespace spec\Knp\MegaMAN\Filter;
 
+use Knp\MegaMAN\Filter\DirectDependency;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class DirectDependencySpec extends ObjectBehavior
 {
@@ -14,7 +14,7 @@ class DirectDependencySpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Knp\MegaMAN\Filter\DirectDependency');
+        $this->shouldHaveType(DirectDependency::class);
     }
 
     function it_can_deduce_direct_deps()

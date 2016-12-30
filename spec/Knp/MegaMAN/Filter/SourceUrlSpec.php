@@ -2,8 +2,8 @@
 
 namespace spec\Knp\MegaMAN\Filter;
 
+use Knp\MegaMAN\Filter\SourceUrl;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class SourceUrlSpec extends ObjectBehavior
 {
@@ -11,7 +11,7 @@ class SourceUrlSpec extends ObjectBehavior
     {
         $this->beConstructedWith('');
 
-        $this->shouldHaveType('Knp\MegaMAN\Filter\SourceUrl');
+        $this->shouldHaveType(SourceUrl::class);
     }
 
     function it_add_source_url_to_definitions()

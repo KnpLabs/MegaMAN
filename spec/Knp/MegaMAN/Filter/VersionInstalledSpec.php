@@ -2,8 +2,8 @@
 
 namespace spec\Knp\MegaMAN\Filter;
 
+use Knp\MegaMAN\Filter\VersionInstalled;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class VersionInstalledSpec extends ObjectBehavior
 {
@@ -11,7 +11,7 @@ class VersionInstalledSpec extends ObjectBehavior
     {
         $this->beConstructedWith('');
 
-        $this->shouldHaveType('Knp\MegaMAN\Filter\VersionInstalled');
+        $this->shouldHaveType(VersionInstalled::class);
     }
 
     function it_add_source_url_to_definitions()
