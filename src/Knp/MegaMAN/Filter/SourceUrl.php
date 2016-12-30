@@ -39,6 +39,7 @@ class SourceUrl implements Filter
                     if (false === array_key_exists('source', $installed)) {
                         continue;
                     }
+
                     if (false === array_key_exists('url', $installed['source'])) {
                         continue;
                     }

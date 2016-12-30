@@ -3,7 +3,6 @@
 namespace spec\Knp\MegaMAN\Markdown\Processor;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class AbsoluteLinkSpec extends ObjectBehavior
 {

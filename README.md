@@ -8,7 +8,7 @@ Find your and documentation but also all dependencies ones.
 #Installation
 
 ```bash
-composer require knplabs/mega-man ~1.0
+composer require knplabs/mega-man ~2.0
 ```
 
 ```php

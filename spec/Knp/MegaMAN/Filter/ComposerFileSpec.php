@@ -2,14 +2,14 @@
 
 namespace spec\Knp\MegaMAN\Filter;
 
+use Knp\MegaMAN\Filter\ComposerFile;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ComposerFileSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Knp\MegaMAN\Filter\ComposerFile');
+        $this->shouldHaveType(ComposerFile::class);
     }
 
     function it_add_existing_composer_files()
