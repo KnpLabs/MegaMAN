@@ -5,7 +5,7 @@ Find your and documentation but also all dependencies ones.
 [![Build Status](https://travis-ci.org/KnpLabs/MegaMAN.svg?branch=master)](https://travis-ci.org/KnpLabs/MegaMAN)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/KnpLabs/MegaMAN/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/KnpLabs/MegaMAN/?branch=master)
 
-#Installation
+# Installation
 
 ```bash
 composer require knplabs/mega-man ~2.0
@@ -29,7 +29,7 @@ class AppKernel
 }
 ```
 
-#Usages
+# Use
 
 A new menu is available into your web debug toolbar.
 
