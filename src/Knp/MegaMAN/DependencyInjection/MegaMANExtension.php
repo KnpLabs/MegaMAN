@@ -14,6 +14,10 @@ class MegaMANExtension extends Extension
      */
     public function load(array $config, ContainerBuilder $container)
     {
+        if ($container->getParameter('kernel.environment') !== 'dev') {
+            return;
+        }
+
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
     }
